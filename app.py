@@ -28,7 +28,21 @@ def _():
 ##############################  
 @get("/items")
 def _():
-    return template("items")   
+    box = [] # list and it is empty
+    for i in range(1, 101):
+        box.append(i)
+    print(box)    
+    return template("items", box=box)   
+
+##############################  
+@get("/users")
+def _():
+    box = [] # list and it is empty
+    for i in range(1, 11):
+        box.append(i)
+    print(box)    
+    return template("users", box=box)   
+
 
 ##############################  
 @get("/items/<id>")
