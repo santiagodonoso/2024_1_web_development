@@ -1,13 +1,22 @@
 % include("_header.html", title="Items")
 
-<h1>
+<h1 class="text-5xl">
     ITEMS
 </h1>
 
-<div id="items">
-    <a href="/items/1">One</a>
-    <a href="/items/2">Two</a>
-    <a href="/items/3">Three</a>
+<div id="items"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+gap-4 px-4"
+>
+    <a href="/items/1"
+    class="flex items-center justify-center border border-gray-700 h-24"
+    >One</a>
+    <a href="/items/2"
+    class="flex items-center justify-center border border-gray-700 h-24"
+    >Two</a>
+    <a href="/items/3"
+    class="flex items-center justify-center border border-gray-700 h-24"
+    >Three</a>
 </div>
 
 
