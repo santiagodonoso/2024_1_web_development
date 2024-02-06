@@ -30,6 +30,14 @@ def _():
 def _():
     return template("items")   
 
+##############################  
+@get("/items/<id>")
+def _(id):
+    return template("item")
+
+
+
+
 
 
 ##############################
