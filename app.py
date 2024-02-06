@@ -25,6 +25,12 @@ def _():
 def _():
     return template("login.html")
 
+##############################  
+@get("/items")
+def _():
+    return template("items")   
+
+
 
 ##############################
 app = default_app()

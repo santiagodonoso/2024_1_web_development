@@ -1,14 +1,25 @@
-REMEMBER to activate the virtual environment
 
+##############################
+REMEMBER to activate the virtual environment
+Windows
+.\Scripts\activate
+
+Mac
+source bin/activate
+
+##############################
+RUN THE SERVER
 Windows
 python -m bottle --server paste --bind 127.0.0.1:80 --debug --reload app
 
 Mac
 sudo python3 -m bottle --server paste --bind 127.0.0.1:80 --debug --reload app
 
-Stop the server 
+##############################
+STOP THE SERVER 
 ctl+c many times, at least 2
 
 
-Run tailwindcss
+##############################
+RUN TAILWINDCSS
 npx tailwindcss -i input.css -o ../app.css --watch
