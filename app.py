@@ -1,5 +1,13 @@
 from bottle import default_app, error, get, static_file, template
- 
+import sqlite3 
+
+
+##############################
+def dict_factory(cursor, row):
+    fields = [column[0] for column in cursor.description]
+    return {key: value for key, value in zip(fields, row)}
+
+
 ##############################
 @get("/app.css")
 def _():
@@ -37,14 +45,11 @@ def _():
 ##############################  
 @get("/users")
 def _():
-    box = [
-        {"user_pk":"1", "user_name":"A"},
-        {"user_pk":"2", "user_name":"B"},
-    ]
-    # for i in range(1, 11):
-    #     box.append(i)
-    # print(box)    
-    return template("users", box=box)   
+    db = sqlite3.connect("company.db")
+    db.row_factory = dict_factory
+    sql = db.execute("SELECT * FROM users")
+    users = sql.fetchall()
+    return template("users", users=users)   
 
 
 ##############################  
