@@ -37,10 +37,13 @@ def _():
 ##############################  
 @get("/users")
 def _():
-    box = [] # list and it is empty
-    for i in range(1, 11):
-        box.append(i)
-    print(box)    
+    box = [
+        {"user_pk":"1", "user_name":"A"},
+        {"user_pk":"2", "user_name":"B"},
+    ]
+    # for i in range(1, 11):
+    #     box.append(i)
+    # print(box)    
     return template("users", box=box)   
 
 

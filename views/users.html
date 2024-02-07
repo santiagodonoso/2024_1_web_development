@@ -6,16 +6,16 @@ class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
 gap-4 px-4 pt-8"
 >
 
-    % for number in box:
-        <a href="/users/{{number}}"
+    % for user in box:
+        <a href="/users/"
         class="relative flex flex-col items-center justify-center 
         bg-neutral-200 border border-gray-400 h-24 rounded-md"
         >
             <p class="">
-                User
+                {{ user["user_name"] }}
             </p>
             <span class="text-3xl font-bold text-sky-500">
-                {{number}} 
+                {{ user["user_pk"] }}
             </span>
             <span class="absolute bottom-1 right-1">
                 🗑️
