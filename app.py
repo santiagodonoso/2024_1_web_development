@@ -1,4 +1,4 @@
-from bottle import default_app, error, get, static_file, template
+from bottle import default_app, error, get, redirect, static_file, template
 import sqlite3 
 
 
@@ -62,7 +62,7 @@ def _(uuid):
                      WHERE user_pk = '{uuid}'
                     """)
     db.commit()
-    return "user deleted" 
+    redirect("/users")
 
 
 ##############################  
