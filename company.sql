@@ -8,8 +8,16 @@ CREATE TABLE users(
 ) WITHOUT ROWID;
 
 -- Insert data into the users table
-INSERT INTO users (user_pk, user_name) VALUES ("842d9ed8-1e4c-438a-8980-b67f0d5e9994", "A");
-INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e650f", "B");
+INSERT INTO users (user_pk, user_name) VALUES ("842d9ed8-1e4c-438a-8980-b67f0d5e9994", "One");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e620f", "Two");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e630f", "Three");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e640f", "Four");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e655f", "Five");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e660f", "Six");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e670f", "Seven");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e680f", "Eight");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e690f", "Nine");
+INSERT INTO users VALUES ("f6912761-b085-4e9c-ad26-74f6113e611f", "Ten");
 
 -- Show all users
 SELECT * FROM users;
