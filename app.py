@@ -53,12 +53,15 @@ def _():
 
 
 ##############################  
-@get("/delete-user")
-def _():
+@get("/delete-user/<uuid>")
+def _(uuid):
     db = sqlite3.connect("company.db")
     db.row_factory = dict_factory # JSON objects
-    sql = db.execute("DELETE FROM users WHERE user_pk = '842d9ed8-1e4c-438a-8980-b67f0d5e9994'")
-    
+    sql = db.execute(f"""
+                     DELETE FROM users 
+                     WHERE user_pk = '{uuid}'
+                    """)
+    db.commit()
     return "user deleted" 
 
 

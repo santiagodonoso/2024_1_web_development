@@ -7,20 +7,17 @@ gap-4 px-4 pt-8"
 >
 
     % for user in users:
-        <a href="/users/"
+        <div
         class="relative flex flex-col items-center justify-center 
         bg-neutral-200 border border-gray-400 h-24 rounded-md"
         >
             <p class="">
                 {{ user["user_name"] }}
             </p>
-            <span class="text-3xl font-bold text-sky-500">
-                {{ user["user_pk"] }}
-            </span>
-            <span class="absolute bottom-1 right-1">
+            <a href="/delete-user/{{user['user_pk']}}" class="absolute bottom-1 right-1">
                 🗑️
-            </span>
-        </a>
+            </a>
+        </div>
     % end
 
 
