@@ -46,10 +46,19 @@ def _():
 @get("/users")
 def _():
     db = sqlite3.connect("company.db")
-    db.row_factory = dict_factory
+    db.row_factory = dict_factory # JSON objects
     sql = db.execute("SELECT * FROM users")
     users = sql.fetchall()
     return template("users", users=users)   
+
+
+##############################  
+@get("/delete-user")
+def _():
+    db = sqlite3.connect("company.db")
+    db.row_factory = dict_factory # JSON objects
+    sql = db.execute("DELETE FROM users WHERE user_pk = '842d9ed8-1e4c-438a-8980-b67f0d5e9994'")
+    return "user deleted" 
 
 
 ##############################  
