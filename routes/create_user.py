@@ -5,10 +5,10 @@ import x
 @post("/users")
 def _():
     try:
+         # Design by contract between front and back-end
         # VALIDATION
         x.validate_user_name()
         x.validate_user_last_name()
-
 
         user_name = request.forms.get("user_name")
         user_last_name = request.forms.get("user_last_name")
