@@ -1,7 +1,11 @@
 % include("_header.html", title="Signup")
 
-    <h1>
-        Signup
-    </h1>
+<main>
+    <form action="/users" method="POST">
+        <input name="user_name" type="text" placeholder="user name">
+        <input name="user_last_name" type="text" placeholder="user last name">
+        <button>Save</button>
+    </form>
+</main>
 
 % include("_footer.html")
