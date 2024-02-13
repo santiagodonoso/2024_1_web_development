@@ -2,18 +2,16 @@ from bottle import default_app, error, get, redirect, static_file, template
 import sqlite3 
 import x
 
-
-##############################
-def dict_factory(cursor, row):
-    fields = [column[0] for column in cursor.description]
-    return {key: value for key, value in zip(fields, row)}
-
-
 ##############################
 @get("/app.css")
 def _():
     return static_file("app.css", ".")
  
+##############################
+import routes.get_users
+
+
+
 ##############################
 @get("/") # 127.0.0.1
 def _():
@@ -42,22 +40,6 @@ def _():
         box.append(i)
     print(box)    
     return template("items", box=box)   
-
-##############################  
-@get("/users")
-def _():
-    try:
-        db = x.db()
-        sql = db.execute("SELECT * FROM users")
-        users = sql.fetchall()
-        return template("users", users=users)   
-    except Exception as ex:
-        print(ex)
-        return "error"
-    finally:
-        if "db" in locals(): db.close()
-
-
 
 
 
