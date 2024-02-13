@@ -1,3 +1,4 @@
+from bottle import request
 import sqlite3
 
 ##############################
@@ -16,6 +17,35 @@ def db():
         print(ex)
     finally:
         pass
+
+##############################
+USER_NAME_MIN = 2
+USER_NAME_MAX = 20
+
+def validate_user_name():
+    if len(request.forms.get("user_name")) < USER_NAME_MIN: 
+        raise Exception("name too short")
+    if len(request.forms.get("user_name")) > USER_NAME_MAX: 
+        raise Exception("name too long")
+    # SUCCESS
+    return "ok"
+
+
+
+##############################
+USER_LAST_NAME_MIN = 2
+USER_LAST_NAME_MAX = 20
+
+def validate_user_last_name():
+    if len(request.forms.get("user_last_name")) < USER_LAST_NAME_MIN: 
+        raise Exception("last name too short")
+    if len(request.forms.get("user_last_name")) > USER_LAST_NAME_MAX: 
+        raise Exception("last name too long")
+    # SUCCESS
+    return "ok"
+
+
+
 
 
 
