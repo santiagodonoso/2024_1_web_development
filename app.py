@@ -9,8 +9,10 @@ def _():
  
 ##############################
 import routes.get_users
-import routes.get_items
 import routes.delete_user
+
+import routes.get_items
+import routes.get_item
 
 
 ##############################
@@ -38,16 +40,6 @@ def _():
 
 
 
-
-
-
-##############################  
-@get("/items/<id>")
-def _(id):
-    title = "Item " + id
-    return template("item", 
-                    id=id, 
-                    title = title)
 
 
 
