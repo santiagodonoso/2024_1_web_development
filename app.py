@@ -1,5 +1,6 @@
 from bottle import default_app, error, get, redirect, static_file, template
 import sqlite3 
+import x
 
 
 ##############################
@@ -45,11 +46,20 @@ def _():
 ##############################  
 @get("/users")
 def _():
-    db = sqlite3.connect("company.db")
-    db.row_factory = dict_factory # JSON objects
-    sql = db.execute("SELECT * FROM users")
-    users = sql.fetchall()
-    return template("users", users=users)   
+    try:
+        db = x.db()
+        sql = db.execute("SELECT * FROM users")
+        users = sql.fetchall()
+        return template("users", users=users)   
+    except Exception as ex:
+        print(ex)
+        return "error"
+    finally:
+        if db in locals(): db.close()
+
+
+
+
 
 
 ##############################  
