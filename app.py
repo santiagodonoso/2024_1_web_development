@@ -55,7 +55,7 @@ def _():
         print(ex)
         return "error"
     finally:
-        if db in locals(): db.close()
+        if "db" in locals(): db.close()
 
 
 
