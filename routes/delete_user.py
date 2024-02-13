@@ -1,4 +1,4 @@
-from bottle import get, redirect
+from bottle import get, response
 import x
 
 ##############################  
@@ -11,9 +11,10 @@ def _(uuid):
                         WHERE user_pk = '{uuid}'
                         """)
         db.commit()
-        redirect("/users")
+        response.status = 303
+        response.set_header("Location", "/users")
     except Exception as ex:
         print(ex)
-        return "error"
+        return "error xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     finally:
         if "db" in locals(): db.close()
