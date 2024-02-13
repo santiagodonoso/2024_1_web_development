@@ -9,7 +9,8 @@ def _():
  
 ##############################
 import routes.get_users
-
+import routes.get_items
+import routes.delete_user
 
 
 ##############################
@@ -32,29 +33,12 @@ def _():
 def _():
     return template("login.html")
 
-##############################  
-@get("/items")
-def _():
-    box = [] # list and it is empty
-    for i in range(1, 101):
-        box.append(i)
-    print(box)    
-    return template("items", box=box)   
 
 
 
 
-##############################  
-@get("/delete-user/<uuid>")
-def _(uuid):
-    db = sqlite3.connect("company.db")
-    db.row_factory = dict_factory # JSON objects
-    sql = db.execute(f"""
-                     DELETE FROM users 
-                     WHERE user_pk = '{uuid}'
-                    """)
-    db.commit()
-    redirect("/users")
+
+
 
 
 ##############################  
