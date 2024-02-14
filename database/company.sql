@@ -32,7 +32,7 @@ END;
 
 -- CREATE A TRIGGER THAT SETS THE "user_deleted_at" to the actual data
 -- whenever a user is deleted. You are doing a soft delete
-
+-- DO YOU REALLY NEED A TRIGGER FOR A SOFT DELETE, OR IT IS JUST AN UPDATE??????????
 
 
 CREATE TRIGGER IF NOT EXISTS trigger_update_total_users 
