@@ -10,6 +10,7 @@ def dict_factory(cursor, row):
 def db():
     try:
         db = sqlite3.connect("company.db")
+        db.execute("PRAGMA foreign_keys = ON")
         db.row_factory = dict_factory # JSON objects
         return db
     except Exception as ex:
