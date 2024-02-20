@@ -6,11 +6,11 @@ class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
 gap-4 px-4 pt-8"
 >
 
-    % for number in box:
-        <a href="/items/{{number}}"
+    % for item in items:
+        <a href="/items/{{item['item_id']}}"
         class="flex items-center justify-center border border-gray-700 h-24"
         >
-            {{number}} 🗑️
+            {{item['item_title']}} 🗑️
         </a>
     % end
 
