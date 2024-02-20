@@ -115,7 +115,7 @@ INSERT INTO items VALUES("1", "One", 10.10);
 INSERT INTO items VALUES("2", "Two", 20.20);
 INSERT INTO items VALUES("3", "Three", 30.30);
 
-
+SELECT * FROM items;
 
 
 
