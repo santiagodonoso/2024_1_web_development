@@ -3,7 +3,7 @@
 
 <form id="frm">
     <label for="">Item name (2 to 20 characters)</label>
-    <input name="item_name" type="text">
+    <input name="item_name" type="text" mix-check=".{2,5}">
     <button mix-post="/items" mix-data="#frm">
         Create item
     </button>

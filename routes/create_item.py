@@ -23,4 +23,4 @@ def _():
     except Exception as ex:
         pass
     finally:
-        pass
+        if "db" in locals(): db.close()
