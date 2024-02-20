@@ -7,11 +7,17 @@ gap-4 px-4 pt-8"
 >
 
     % for item in items:
-        <a href="/items/{{item['item_id']}}"
-        class="flex items-center justify-center border border-gray-700 h-24"
-        >
-            {{ item['item_title'] }} 🗑️
-        </a>
+        <div id="item_{{ item['item_id'] }}">
+            <a href="/items/{{item['item_id']}}"
+            class="flex items-center justify-center border border-gray-700 h-24"
+            >
+                {{ item['item_title'] }}
+            </a>
+
+            <button mix-delete="/items/{{ item['item_id'] }}">
+                🗑️
+            </button>
+        </div>
     % end
 
 

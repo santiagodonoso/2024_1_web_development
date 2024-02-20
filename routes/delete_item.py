@@ -8,7 +8,11 @@ def _(id):
         db = x.db()
         q = db.execute("DELETE FROM items WHERE item_id = ?", (id,))
         db.commit()
-        return f"item deleted with id: {id}"
+        return f"""
+        <template mix-target="#item_{id}" mix-replace>
+
+        </template>
+        """
     except Exception as ex:
         print(ex)
     finally:
