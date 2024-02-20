@@ -1,8 +1,8 @@
-from bottle import get
+from bottle import delete
 import x
 
 ##############################
-@get("/item/<id>")
+@delete("/items/<id>")
 def _(id):
     try:
         db = x.db()

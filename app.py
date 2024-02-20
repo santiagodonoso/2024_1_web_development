@@ -3,10 +3,22 @@ import sqlite3
 import x
 
 ##############################
+@get("/favicon.ico")
+def _():
+    return static_file("favicon.ico", ".")
+
+
+##############################
 @get("/app.css")
 def _():
     return static_file("app.css", ".")
  
+
+##############################
+@get("/mixhtml.js")
+def _():
+    return static_file("mixhtml.js", ".")
+
 ##############################
 import routes.get_users
 import routes.delete_user
