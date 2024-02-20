@@ -74,7 +74,6 @@ INSERT INTO phones VALUES("3", "333");
 SELECT * FROM phones;
 
 
-
 -- DELETE FROM users WHERE user_pk = "1";
 -- SELECT * FROM users;
 -- SELECT * FROM phones;
@@ -97,22 +96,24 @@ DELETE FROM users WHERE user_pk = "1";
 -- INSERT UPDATE DELETE
 
 
-
-
-
 -- CREATE TRIGGER update_customer_address UPDATE OF address ON customers 
 -- BEGIN
 --     UPDATE orders SET address = new.address WHERE customer_name = old.name;
 -- END;
 
 
+DROP TABLE IF EXISTS items;
 
+CREATE TABLE items(
+    item_id     TEXT,
+    item_title  TEXT,
+    item_price  NUMERIC,
+    PRIMARY KEY(item_id)
+) WITHOUT ROWID;
 
-
-
-
-
-
+INSERT INTO items VALUES("1", "One", 10.10);
+INSERT INTO items VALUES("2", "Two", 20.20);
+INSERT INTO items VALUES("3", "Three", 30.30);
 
 
 
