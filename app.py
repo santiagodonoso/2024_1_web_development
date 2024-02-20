@@ -15,6 +15,8 @@ import routes.create_user
 import routes.get_items
 import routes.get_item
 
+import routes.delete_item
+
 
 
 
