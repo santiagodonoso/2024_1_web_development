@@ -1,5 +1,6 @@
 from bottle import request
 import sqlite3
+import pathlib
 
 ##############################
 def dict_factory(cursor, row):
@@ -9,7 +10,7 @@ def dict_factory(cursor, row):
 ##############################
 def db():
     try:
-        db = sqlite3.connect("company.db")
+        db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/database/company.db")
         db.execute("PRAGMA foreign_keys = ON")
         db.row_factory = dict_factory # JSON objects
         return db
