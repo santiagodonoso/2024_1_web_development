@@ -10,7 +10,9 @@ def _(id):
         db.commit()
         return f"""
         <template mix-target="#item_{id}" mix-replace>
-
+            <div class="bg-red-500" mix-ttl="2000">
+                Item deleted
+            </div>
         </template>
         """
     except Exception as ex:

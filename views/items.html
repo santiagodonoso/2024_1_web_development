@@ -1,10 +1,23 @@
 % include("_header.html", title="Items")
 
 
+<form id="frm">
+    <label for="">Item name (2 to 20 characters)</label>
+    <input name="item_name" type="text">
+    <button mix-post="/items" mix-data="#frm">
+        Create item
+    </button>
+</form>
+
+
+
 <div id="items"
 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
 gap-4 px-4 pt-8"
 >
+
+
+
 
     % for item in items:
         <div id="item_{{ item['item_id'] }}">
