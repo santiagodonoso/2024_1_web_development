@@ -22,21 +22,21 @@ def _():
 
         if "user_password" in ex.args[1]:
             return """
-            <template mix-target="#frm" mix-before>
-                <div mix-ttl="2000">User password invalid</div>
+            <template mix-target="#error" mix-replace>
+                <div id="error">User password invalid</div>
             </template>
             """
         
         if "user_email" in ex.args[1]:
             return """
-            <template mix-target="#frm" mix-before>
-                <div mix-ttl="2000">User email invalid</div>
+            <template mix-target="#error" mix-replace>
+                <div id="error">User email invalid</div>
             </template>
             """
         
         return """
-        <template mix-target="#frm" mix-before>
-            <div mix-ttl="2000">System under maintainance</div>
+        <template mix-target="#error" mix-replace>
+            <div id="error">System under maintainance</div>
         </template>
         """
 
