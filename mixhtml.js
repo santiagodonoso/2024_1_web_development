@@ -1,7 +1,5 @@
 function cl(text){console.log(text)}
 
-// let html = document.getElementsByTagName("html")[0]
-// html = html.outerHTML
 history.replaceState({"mixonurl":mix_replace_url}, "title", mix_replace_url)
 
 
@@ -9,7 +7,6 @@ history.replaceState({"mixonurl":mix_replace_url}, "title", mix_replace_url)
 async function mixhtml(el=false){
     
     if( !el ){
-        // cl("info mix(el) not given. Using the element itself")
         el = event.target
     }
 
@@ -21,18 +18,13 @@ async function mixhtml(el=false){
     if( el.hasAttribute("mix-delete") ){ url = el.getAttribute("mix-delete") }
     if(url == ""){ cl(`mix-method missing, therefore url not found`); return }
     cl(`url: ${url}`)
-    // cl(`##### mix-url: ${el.getAttribute("mix-url")}`)
-    // if( ! el.getAttribute("mix-url") ){ console.log( `error : mix() mix-url missing` ); return }    
-    // cl(`ok : mix() mix-url to fetch data is '${el.getAttribute("mix-url")}'`)    
 
-    // If element/s in dom, then show it. Else fetch them
     if( document.querySelector(`[mix-on-url="${url}"]`) ){
         cl("SPA already loaded, showing elements")
         mixonurl(url)
         return
     }
 
-    // xUrl not in the dom, get it
     mix_fetch_data(el)
 
 }
@@ -52,7 +44,7 @@ async function mix_fetch_data(el){
     
     // cl("url: " + url)
 
-    if(method == "post"){
+    if(method == "post" || method == "put"){
         if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
         if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return} 
         const frm = document.querySelector(el.getAttribute("mix-data"))
@@ -101,9 +93,19 @@ async function mix_fetch_data(el){
 
 // ##############################
 function process_template(mix_url){
-    cl(`process_template() mix-url ${mix_url}`)
-    let new_url = false    
-    if( ! document.querySelector("template[mix-target]") ){ cl(`process_template() - error - template not found`); return }
+    cl(`process_template() mix-url ${mix_url}`) 
+
+    let new_url = false 
+    
+    if( document.querySelector("template[mix-redirect]") ){ 
+        cl(`mix-redirect found`)
+        location.href= document.querySelector("template[mix-redirect]").getAttribute("mix-redirect")
+        return 
+    }
+
+
+    
+    if( ! document.querySelector("template[mix-target]") ){ cl(`mix-target not found`); return }
     document.querySelectorAll('template[mix-target]').forEach(template => {
         // console.log("template", template)  
 
@@ -136,8 +138,6 @@ function process_template(mix_url){
 
 
         if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
-        // const xonurl = template.dataset.xonurl
-        // cl(xonurl)
         template.remove()
         mix_convert();
         // Process newly injected elements and push to history
@@ -173,13 +173,7 @@ function mixonurl(mix_url, push_to_history = true){
             })
         }
         if(el.getAttribute("mix-show")){
-            // cl(`showing element`)
-            // cl(`showing element: ${el.getAttribute("mix-show")}`)
-            // document.querySelector(el.dataset.xshow).classList.remove("hidden")
-                  
-            // document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
             document.querySelectorAll(el.getAttribute("mix-show")).forEach( i => {
-                // cl(i)
                 i.classList.remove("hidden")
             })
         }            
@@ -205,7 +199,7 @@ setInterval(function(){
             el.setAttribute("mix-ttl", el.getAttribute("mix-ttl") - 1000)
         }
     })
-}, 1000)
+}, 500)
 
 // ##############################
 function mix_convert(){
@@ -216,21 +210,13 @@ function mix_convert(){
         if(el.hasAttribute("mix-delete")){ method = "mix-delete" }
         
         let url = ""
-        // cl('el.getAttribute(method) ')
-        // cl(el.getAttribute(method) )
         if(el.getAttribute(method) == ""){    
             if( el.getAttribute("href")){
-                // cl("converting attribute 'href'")
                 el.setAttribute(`${method}`, el.getAttribute("href"))
             }
             if( el.getAttribute("action")){
-                // cl("converting attribute 'href'")
                 el.setAttribute(`${method}`, el.getAttribute("action"))
-            }            
-            // if( el.getAttribute("url")){ // TODO: not standard, maybe delete this
-            //     // cl("converting attribute 'url'")
-            //     el.setAttribute(`${method}`, el.getAttribute("url"))
-            // }                  
+            }                            
         }
         if(!el.hasAttribute("mix-focus") && !el.hasAttribute("mix-blur")){
             el.setAttribute("onclick", "mixhtml(); return false")
@@ -239,7 +225,6 @@ function mix_convert(){
 
     let mix_event = "onclick"
     document.querySelectorAll("[mix-focus], [mix-blur]").forEach( el => {
-        // cl(el)
         if(el.hasAttribute("mix-focus")){ mix_event = "onfocus" }
         if(el.hasAttribute("mix-blur")){ mix_event = "onblur" }
         el.setAttribute(mix_event, "mixhtml(); return false")

@@ -4,4 +4,15 @@
         Login
     </h1>
 
+    <form id="frm">
+        <input name="email" type="text">
+        <input name="password" type="text">
+        <button mix-post="/login" mix-data="#frm">
+            Login
+        </button>
+
+    </form>
+
+
+
 % include("_footer.html")
