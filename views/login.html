@@ -3,12 +3,15 @@
     <h1>
         Login
     </h1>
-
+    
     <form id="frm">
-        <input name="email" type="text">
-        <input name="password" type="text">
-        <button mix-post="/login" mix-data="#frm">
+        <input name="user_email" type="text">
+        <input name="user_password" type="text">
+        <button mix-post="/login" mix-data="#frm" mix-wait="#loading">
             Login
+        </button>
+        <button id="loading" class="mix-hidden">
+            Loading...
         </button>
     </form>
 

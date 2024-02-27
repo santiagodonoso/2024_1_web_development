@@ -1,6 +1,7 @@
 from bottle import request
 import sqlite3
 import pathlib
+import re
 
 ##############################
 def dict_factory(cursor, row):
