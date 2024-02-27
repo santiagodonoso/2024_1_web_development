@@ -53,7 +53,8 @@ async function mix_fetch_data(el){
         const attrs = frm.querySelectorAll("[mix-check]")
         for(let i = 0; i < attrs.length; i++){
             attrs[i].classList.remove("mix-error") 
-            const regex = "^"+attrs[i].getAttribute("mix-check")+"$"
+            // const regex = "^"+attrs[i].getAttribute("mix-check")+"$"
+            const regex = attrs[i].getAttribute("mix-check")
             re = new RegExp(regex)
             cl(re.test(attrs[i].value))
             if( ! re.test(attrs[i].value) ){

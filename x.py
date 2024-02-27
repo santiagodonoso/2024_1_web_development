@@ -51,14 +51,16 @@ def validate_user_last_name():
 ##############################
 USER_PASSWORD_MIN = 6
 USER_PASSWORD_MAX = 50
+USER_PASSWORD_REGEX = "^.{6,50}$"
 
 def validate_user_password():
-	error = f"user_password {USER_PASSWORD_MIN} to {USER_PASSWORD_MAX} characters"
-	user_password = request.forms.get("user_password", "")
-	user_password = user_password.strip()
-	if len(user_password) < USER_PASSWORD_MIN : raise Exception(400, error)
-	if len(user_password) > USER_PASSWORD_MAX : raise Exception(400, error)
-	return user_password
+    error = f"user_password {USER_PASSWORD_MIN} to {USER_PASSWORD_MAX} characters"
+    user_password = request.forms.get("user_password", "")
+    user_password = user_password.strip()
+    # if len(user_password) < USER_PASSWORD_MIN : raise Exception(400, error)
+    # if len(user_password) > USER_PASSWORD_MAX : raise Exception(400, error)
+    if not re.match(USER_PASSWORD_REGEX, user_password): raise Exception(400, error)
+    return user_password
 
 
 ##############################

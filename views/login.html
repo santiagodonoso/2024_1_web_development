@@ -1,12 +1,15 @@
+% import x
 % include("_header.html", title="Login")
+
 
     <h1>
         Login
     </h1>
     
     <form id="frm">
-        <input name="user_email" type="text">
-        <input name="user_password" type="text">
+        <input name="user_email" type="text" value="a@a.com" placeholder="email">
+        <input name="user_password" type="text" placeholder="password" 
+        mix-check="{{x.USER_PASSWORD_REGEX}}">
         <button mix-post="/login" mix-data="#frm" mix-wait="#loading">
             Login
         </button>
