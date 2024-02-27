@@ -14,6 +14,8 @@ CREATE TABLE users(
     user_pk                 TEXT,
     user_name               TEXT,
     user_updated_at         TEXT,
+    user_email              TEXT UNIQUE,
+    user_password           TEXT,
     PRIMARY KEY(user_pk)
 ) WITHOUT ROWID;
 
@@ -44,10 +46,10 @@ END;
 
 
 -- SEED
-INSERT INTO users VALUES("1", "One", "0");
-INSERT INTO users VALUES("2", "Two", "0");
-INSERT INTO users VALUES("3", "Three", "0");
-INSERT INTO users VALUES("4", "Four", "0");
+INSERT INTO users VALUES("1", "One", "0", "one@one.com", "password");
+INSERT INTO users VALUES("2", "Two", "0", "two@two.com", "password");
+INSERT INTO users VALUES("3", "Three", "0", "three@three.com", "password");
+INSERT INTO users VALUES("4", "Four", "0", "four@four.com", "password");
 
 
 UPDATE users SET user_name = "Santiago" WHERE user_pk = "1" ;
