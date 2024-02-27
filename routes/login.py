@@ -1,8 +1,13 @@
-from bottle import post
+from bottle import post, response
 
 @post("/login")
 def _():
-    return "x"
+    # TODO: validate the email and password
+    response.set_cookie("name", "Santiago")
+    return """
+    <template mix-redirect="/admin">
+    </template>
+    """
 
 
 

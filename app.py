@@ -31,6 +31,7 @@ import routes.create_item
 import routes.delete_item
 
 import routes.login
+import routes.admin
 
 
 ##############################
