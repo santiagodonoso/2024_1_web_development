@@ -1,6 +1,9 @@
-from bottle import get, request
+from bottle import get, request, template
 
 @get("/admin")
 def _():
-    name = request.get_cookie("name")
-    return f"Hi {name}"
+    name = request.get_cookie("name", secret="my_secret")
+    if name:
+        return template("admin", name=name)
+    else:
+        return "access denied"

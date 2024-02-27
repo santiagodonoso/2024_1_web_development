@@ -32,6 +32,7 @@ import routes.delete_item
 
 import routes.login
 import routes.admin
+import routes.logout
 
 
 ##############################
