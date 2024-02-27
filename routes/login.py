@@ -9,6 +9,10 @@ def _():
         x.validate_user_email()
         x.validate_user_password()
 
+        # TODO: Connect to the db and check that the email and password are correct
+        # db.exceute(SELECT * FROM users WHERE user_email = ? AND user_password = ?, (email, password))
+        
+
         response.set_cookie("name", "Santiago", secret="my_secret", httponly=True)
         return """
         <template mix-redirect="/admin">
