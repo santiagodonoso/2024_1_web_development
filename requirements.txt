@@ -1,4 +1,4 @@
 bottle == 0.12.25
 paste == 3.7.1
-
+bcrypt == 4.1.2
 

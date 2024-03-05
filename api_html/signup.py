@@ -2,6 +2,7 @@ from bottle import post, request
 import x
 import uuid
 import time
+import bcrypt
 
 @post("/signup")
 def _():
@@ -11,13 +12,16 @@ def _():
         user_id = uuid.uuid4().hex
         user_name = "Santiago"
         user_updated_at = 0
-        user_password = "password"
-        user_created_at = time.time() # only save the created_at in seconds, not mill.
+
+        salt = bcrypt.gensalt()
+        user_password = b"password"
+        hashed_password = bcrypt.hashpw(user_password, salt)
+        user_created_at = int(time.time())
  
         db = x.db()
         q = db.execute("INSERT INTO users VALUES(?, ?, ?, ?, ?, ?)", 
                        (user_id, user_name, user_updated_at, 
-                        user_email, user_password, user_created_at))
+                        user_email, hashed_password, user_created_at))
         db.commit()
         return """
         <template mix-target="#message">
