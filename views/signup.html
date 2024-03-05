@@ -2,12 +2,14 @@
 
 <main>
 
-    <form>
+    <form id="frm_signup">
         <div>
             <label for="">email</label>
             <input type="text">
         </div>
-        <button type="button">
+        <button type="button" 
+        mix-post="/signup" 
+        mix-data="#frm_signup">
             Signup
         </button>
     </form>
