@@ -33,28 +33,27 @@ def db():
 ##############################
 USER_NAME_MIN = 2
 USER_NAME_MAX = 20
+USER_NAME_REGEX = "^.{2,20}$"
 
 def validate_user_name():
-    if len(request.forms.get("user_name")) < USER_NAME_MIN: 
-        raise Exception("name too short")
-    if len(request.forms.get("user_name")) > USER_NAME_MAX: 
-        raise Exception("name too long")
-    # SUCCESS
-    return "ok"
-
+    error = f"user_name {USER_NAME_MIN} to {USER_NAME_MAX} characters"
+    user_name = request.forms.get("user_name", "")
+    user_name = user_name.strip()
+    if not re.match(USER_NAME_REGEX, user_name): raise Exception(400, error)
+    return user_name
 
 
 ##############################
 USER_LAST_NAME_MIN = 2
 USER_LAST_NAME_MAX = 20
+USER_LAST_NAME_REGEX = "^.{2,20}$"
 
 def validate_user_last_name():
-    if len(request.forms.get("user_last_name")) < USER_LAST_NAME_MIN: 
-        raise Exception("last name too short")
-    if len(request.forms.get("user_last_name")) > USER_LAST_NAME_MAX: 
-        raise Exception("last name too long")
-    # SUCCESS
-    return "ok"
+    error = f"user_last_name {USER_LAST_NAME_MIN} to {USER_LAST_NAME_MAX} characters"
+    user_last_name = request.forms.get("user_last_name", "")
+    user_last_name = user_last_name.strip()
+    if not re.match(USER_LAST_NAME_REGEX, user_last_name): raise Exception(400, error)
+    return user_last_name
 
 
 ##############################

@@ -4,15 +4,54 @@
 
 <main>
 
-    <form id="frm_signup">
+    <form id="frm_signup" autocomplete="off" class="flex flex-col gap-2 w-1/2 mx-auto">
         <div id="message"></div>
-        <div>
-            <label for="">email</label>
+        <div class="flex flex-col">
+            <label for="" class="flex">
+                <span>name</span>
+                <span class="ml-auto text-neutral-400">{{x.USER_NAME_MIN}} to {{x.USER_NAME_MAX}} characters</span>
+            </label>
+            <input
+            maxlength="20"
+            name="user_name" 
+            type="text"             
+            mix-check="{{x.USER_NAME_REGEX}}"
+            >
+        </div>  
+        
+        <div class="flex flex-col">
+            <label for="" class="flex">
+                <span>last name</span>
+                <span class="ml-auto text-neutral-400">{{x.USER_LAST_NAME_MIN}} to {{x.USER_LAST_NAME_MAX}} characters</span>
+            </label>
+            <input 
+            name="user_last_name" 
+            type="text" 
+            mix-check="{{x.USER_LAST_NAME_REGEX}}">
+        </div>  
+        
+        
+        <div class="flex flex-col">
+            <label for="" class="flex">
+                <span>email</span>                
+            </label>
             <input 
             name="user_email" 
             type="text" 
             mix-check="{{x.USER_EMAIL_REGEX}}">
         </div>
+  
+        <div class="flex flex-col">
+            <label for="" class="flex">
+                <span>password</span>
+                <span class="ml-auto text-neutral-400">{{x.USER_PASSWORD_MIN}} to {{x.USER_PASSWORD_MAX}} characters</span>
+            </label>
+            <input 
+            maxlength="20"
+            name="user_password" 
+            type="text" 
+            mix-check="{{x.USER_PASSWORD_REGEX}}">
+        </div>               
         <button type="button" 
         mix-post="/signup" 
         mix-data="#frm_signup">

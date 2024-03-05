@@ -56,7 +56,6 @@ INSERT INTO users VALUES("4", "Four", "0", "four@four.com", "password");
 UPDATE users SET user_name = "Santiago" WHERE user_pk = "1" ;
 
 
-
 SELECT * FROM users;
 
 

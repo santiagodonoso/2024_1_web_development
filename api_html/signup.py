@@ -9,12 +9,13 @@ def _():
     try:
         # Validate
         user_email = x.validate_user_email()
+        user_name = x.validate_user_name()  
+        user_password = x.validate_user_password().encode()
+    
         user_id = uuid.uuid4().hex
-        user_name = "Santiago"
         user_updated_at = 0
 
         salt = bcrypt.gensalt()
-        user_password = b"password"
         hashed_password = bcrypt.hashpw(user_password, salt)
         user_created_at = int(time.time())
  

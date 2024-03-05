@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input{
+    @apply h-8 rounded-sm px-2;
+}
