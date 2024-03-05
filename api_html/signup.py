@@ -25,7 +25,7 @@ def _():
         """
     except Exception as ex:
         print(ex)
-        if "users.user_email" in ex:
+        if "users.user_email" in str(ex):
              return """
             <template mix-target="#message">
             <div id="message">
@@ -35,7 +35,7 @@ def _():
             """           
 
 
-        if "user_email" in ex.args[1]:
+        if "user_email invalid" in str(ex):
             return """
             <template mix-target="#message">
             <div id="message">
