@@ -1,6 +1,7 @@
 from bottle import post, request
 import x
 import uuid
+import time
 
 @post("/signup")
 def _():
@@ -11,10 +12,12 @@ def _():
         user_name = "Santiago"
         user_updated_at = 0
         user_password = "password"
-
+        user_created_at = time.time() # only save the created_at in seconds, not mill.
+ 
         db = x.db()
-        q = db.execute("INSERT INTO users VALUES(?, ?, ?, ?, ?)", 
-                       (user_id, user_name, user_updated_at, user_email, user_password))
+        q = db.execute("INSERT INTO users VALUES(?, ?, ?, ?, ?, ?)", 
+                       (user_id, user_name, user_updated_at, 
+                        user_email, user_password, user_created_at))
         db.commit()
         return """
         <template mix-target="#message">
@@ -33,7 +36,6 @@ def _():
             </div>
             </template>    
             """           
-
 
         if "user_email invalid" in str(ex):
             return """
