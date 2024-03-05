@@ -34,6 +34,12 @@ import routes.login
 import routes.admin
 
 ##############################
+
+import api_html.signup
+
+
+
+##############################
 @get("/logout")
 def _():
   response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
