@@ -1,18 +1,40 @@
 from bottle import post, request
 import x
+import uuid
 
 @post("/signup")
 def _():
     try:
         # Validate
-        x.validate_user_email()
+        user_email = x.validate_user_email()
+        user_id = uuid.uuid4().hex
+        user_name = "Santiago"
+        user_updated_at = 0
+        user_password = "password"
 
+        db = x.db()
+        q = db.execute("INSERT INTO users VALUES(?, ?, ?, ?, ?)", 
+                       (user_id, user_name, user_updated_at, user_email, user_password))
+        db.commit()
         return """
-        <template>
+        <template mix-target="#message">
+            <div id="message">
+                User created
+            </div>        
         </template>
         """
     except Exception as ex:
         print(ex)
+        if "users.user_email" in ex:
+             return """
+            <template mix-target="#message">
+            <div id="message">
+                Email not available
+            </div>
+            </template>    
+            """           
+
+
         if "user_email" in ex.args[1]:
             return """
             <template mix-target="#message">
@@ -22,4 +44,4 @@ def _():
             </template>    
             """
     finally:
-        pass
+        if "db" in locals(): db.close()

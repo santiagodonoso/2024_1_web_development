@@ -1,4 +1,6 @@
 % include("_header.html", title="Signup")
+% import x
+
 
 <main>
 
@@ -6,7 +8,10 @@
         <div id="message"></div>
         <div>
             <label for="">email</label>
-            <input name="user_email" type="text">
+            <input 
+            name="user_email" 
+            type="text" 
+            mix-check="{{x.USER_EMAIL_REGEX}}">
         </div>
         <button type="button" 
         mix-post="/signup" 
