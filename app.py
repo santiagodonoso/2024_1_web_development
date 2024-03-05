@@ -33,7 +33,6 @@ import routes.delete_item
 import routes.login
 import routes.admin
 
-
 ##############################
 @get("/logout")
 def _():
@@ -44,7 +43,6 @@ def _():
   response.status = 303
   response.set_header("Location", "/login")
   return    
-
 
 ##############################
 @get("/") # 127.0.0.1
