@@ -1,0 +1,31 @@
+{
+    "id":"P1",
+    "version":2,
+    "name":"t-shirt",
+    "price":10.10,
+    "bought_by_users":[
+        {
+            "id":"1",
+            "version":1,
+            "name":"you",
+            "price":10.10,
+            "discount":1.10,
+            "total_paid":9,
+            "created_at": 1709720450            
+        }
+    ],
+    "liked_by_users":[
+        {
+            "id":"1",
+            "version":1,
+            "name":"you",
+            "liked_at":1709719092
+        },
+        {
+            "id":"2",
+            "version":1,
+            "name":"Peter",
+            "liked_at":1709719313                              
+        }        
+    ]
+}

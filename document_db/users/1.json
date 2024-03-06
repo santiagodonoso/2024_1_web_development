@@ -1,0 +1,26 @@
+{
+    "id":"1",
+    "version":1,
+    "name":"you",
+    "bought_products":[
+        {
+            "id":"P1",
+            "version":2,
+            "name":"t-shirt",
+            "price":10.10,
+            "discount":1.10,
+            "total_paid":9,
+            "created_at": 1709720450       
+        }
+    ],
+    "liked_products":[
+        {
+            "id":"P1",
+            "name":"t-shirt",
+            "price":10.10,
+            "liked_at":1709719092
+        }        
+    ]
+}
+
+

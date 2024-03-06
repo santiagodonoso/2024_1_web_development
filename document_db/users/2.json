@@ -1,0 +1,15 @@
+{
+    "id":"2",
+    "version":1,
+    "name":"Peter",
+    "liked_products":[
+        {
+            "id":"P1",
+            "name":"t-shirt",
+            "price":10.10,
+            "liked_at":1709719313
+        }        
+    ]
+}
+
+
